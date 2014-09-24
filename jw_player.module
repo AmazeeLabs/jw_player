@@ -373,7 +373,13 @@ function jw_player_process_jw_player(&$variables) {
   }
   // If inline is not selected, add all relevant JavaScript now.
   else {
-    drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js'); // Add library
+    drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js', array(
+      'type' => 'external',
+      'scope' => 'header',
+      'group' => JS_LIBRARY,
+      'weight' => -10,
+      'preprocess' => FALSE,
+    )); // Add library
     drupal_add_js(drupal_get_path('module', 'jw_player') . '/jw_player.js'); // Attaches JW Player element
     drupal_add_js(array('jw_player' => array($variables['html_id'] => $variables['config'])), 'setting'); // Player settings
   }
@@ -388,7 +394,13 @@ function jw_player_process_jw_player(&$variables) {
  */
 function jw_player_init() {
   if (variable_get('jw_player_inline_js', FALSE)) {
-    drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js'); // Add library
+    drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js', array(
+      'type' => 'external',
+      'scope' => 'header',
+      'group' => JS_LIBRARY,
+      'weight' => -10,
+      'preprocess' => FALSE,
+    )); // Add library
   }
 }
 
