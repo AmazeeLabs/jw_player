@@ -374,7 +374,6 @@ function jw_player_process_jw_player(&$variables) {
   // If inline is not selected, add all relevant JavaScript now.
   else {
     drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js', array(
-      'type' => 'external',
       'scope' => 'header',
       'group' => JS_LIBRARY,
       'weight' => -10,
@@ -395,7 +394,6 @@ function jw_player_process_jw_player(&$variables) {
 function jw_player_init() {
   if (variable_get('jw_player_inline_js', FALSE)) {
     drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js', array(
-      'type' => 'external',
       'scope' => 'header',
       'group' => JS_LIBRARY,
       'weight' => -10,
